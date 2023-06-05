@@ -17,7 +17,7 @@ namespace SaleReportSystem
 {
     public partial class MainForm : Form
     {
-        readonly string sqlConnection = "Data Source=DESKTOP-GOA7909\\SQLEXPRESS;Initial Catalog=WebSalesDb;Integrated Security=True";
+        readonly string sqlConnection = "INSERT CONNECTION STRING HERE";
         private string userId;
         List<MonthComboboxItem> monthlist = new List<MonthComboboxItem>
             {
