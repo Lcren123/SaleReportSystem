@@ -14,5 +14,6 @@ namespace SaleReportSystem.Class
         public string UserId { get; set; }
         public double Amount { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public int Status { get; set; }
     }
 }

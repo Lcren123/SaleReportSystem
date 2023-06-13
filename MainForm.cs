@@ -53,10 +53,22 @@ namespace SaleReportSystem
             comboBox_Month.ValueMember = "Id";
             comboBox_Month.DisplayMember = "Months";
 
+            DataGridViewComboBoxColumn myCombo = new DataGridViewComboBoxColumn();
+            myCombo.DataPropertyName = "UserId";
+            myCombo.HeaderText = "UserId";
+            myCombo.DataSource = agentList;
+            TransactionTable.Columns.Insert(4, myCombo);
+
+            populateTransactionTable();
+        }
+
+        private void populateTransactionTable()
+        {
+            SqlConnection myConnection = new SqlConnection(sqlConnection);
             //populate Transaction Table
             myConnection = new SqlConnection(sqlConnection);
             myConnection.Open();
-            cmd = new SqlCommand("SELECT * FROM dbo.SalesTransaction WHERE userId = @userId", myConnection);
+            SqlCommand cmd = new SqlCommand("SELECT saleId, salesItem, salesDate, userId, CONVERT(DECIMAL(10,2),amount) as amount, updatedDate, Status FROM dbo.SalesTransaction WHERE userId = @userId AND Status != 0", myConnection);
             cmd.Parameters.AddWithValue("userId", userId);
             cmd.ExecuteReader();
             myConnection.Close();
@@ -74,6 +86,18 @@ namespace SaleReportSystem
             if (iExit == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void buttonlogout_Click(object sender, EventArgs e)
+        {
+            DialogResult iLogOut;
+            iLogOut = MessageBox.Show("Confirm if you want to log out", "Sales Record System", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (iLogOut == DialogResult.Yes)
+            {
+                new LoginForm().Show();
+                this.Hide();
             }
         }
 
@@ -95,6 +119,7 @@ namespace SaleReportSystem
                 var result = command.ExecuteNonQuery();
                 DialogResult iSuccess = MessageBox.Show("Record Update successful", "Sales Record System", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                populateTransactionTable();
             }
             catch (Exception)
             {
@@ -115,8 +140,21 @@ namespace SaleReportSystem
             TransactionTable.Visible = true;
             button_UpdateRecord.Visible = true;
 
+        }
 
+        private void TransactionTable_DeleteClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if click is on new row or header row
+            if (e.RowIndex == TransactionTable.NewRowIndex || e.RowIndex < 0)
+                return;
 
+            //Check if click is on specific column 
+            if (e.ColumnIndex == TransactionTable.Columns["deleteButton"].Index)
+            {
+                TransactionTable[e.ColumnIndex, e.RowIndex].Value = 0;
+                TransactionTable[e.ColumnIndex, e.RowIndex].ReadOnly = true;
+
+        }
         }
         #endregion
 
@@ -133,7 +171,7 @@ namespace SaleReportSystem
                 if (reader.Read())
                 {
                     var result = reader["userRole"].ToString();
-                    if (result == "manager")
+                    if (result.ToLower() == "manager")
                     {
                         panel_Record.Visible = false;
                         TransactionTable.Visible = false;
@@ -177,6 +215,10 @@ namespace SaleReportSystem
                     }
                 }
                 dataGridView1.DataSource = list;
+                if (list.Count() == 0)
+                {
+                    DialogResult iFailure = MessageBox.Show("There is no record found!", "Sales Record System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception)
             {
@@ -210,6 +252,10 @@ namespace SaleReportSystem
                 }
 
                 dataGridView2.DataSource = list;
+                if (list.Count() == 0)
+                {
+                    DialogResult iFailure = MessageBox.Show("There is no record found!", "Sales Record System", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
             catch (Exception)

@@ -38,9 +38,9 @@ namespace SaleReportSystem
 
             conn.Close();
             if (userId != null)
-            {
-                this.Hide();
+            {                
                 new MainForm(userId).Show();
+                this.Hide();
             }
             else
             {

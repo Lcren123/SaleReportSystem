@@ -89,9 +89,11 @@
             // 
             txt_Password.BackColor = System.Drawing.SystemColors.ControlDark;
             txt_Password.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txt_Password.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             txt_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             txt_Password.Location = new System.Drawing.Point(135, 161);
             txt_Password.Name = "txt_Password";
+            txt_Password.PasswordChar = '*';
             txt_Password.Size = new System.Drawing.Size(299, 19);
             txt_Password.TabIndex = 6;
             // 

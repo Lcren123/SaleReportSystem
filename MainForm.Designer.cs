@@ -1,6 +1,7 @@
 ﻿
 using System.Linq;
 using System;
+using System.Windows.Forms;
 
 namespace SaleReportSystem
 {
@@ -33,51 +34,50 @@ namespace SaleReportSystem
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            panel1 = new System.Windows.Forms.Panel();
-            label1 = new System.Windows.Forms.Label();
-            panel2 = new System.Windows.Forms.Panel();
-            button4 = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
-            Exit = new System.Windows.Forms.Button();
-            button_UpdateRecord = new System.Windows.Forms.Button();
-            TransactionTable = new System.Windows.Forms.DataGridView();
-            saleIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            salesItemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            salesDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            updatedDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            salesTranscationBindingSource = new System.Windows.Forms.BindingSource(components);
-            panel_Record = new System.Windows.Forms.Panel();
-            label_Record = new System.Windows.Forms.Label();
-            dataSet11 = new DataSet1();
-            panel_YearlyReport = new System.Windows.Forms.Panel();
-            label5 = new System.Windows.Forms.Label();
-            comboBox_Year = new System.Windows.Forms.ComboBox();
-            button3 = new System.Windows.Forms.Button();
-            label3 = new System.Windows.Forms.Label();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
-            monthDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            amountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            salesSummaryReportBindingSource = new System.Windows.Forms.BindingSource(components);
-            panel_MonthlyReport = new System.Windows.Forms.Panel();
-            label7 = new System.Windows.Forms.Label();
-            comboBox_Month = new System.Windows.Forms.ComboBox();
-            label6 = new System.Windows.Forms.Label();
-            comboBox_Agent = new System.Windows.Forms.ComboBox();
-            label4 = new System.Windows.Forms.Label();
-            button5 = new System.Windows.Forms.Button();
-            dataGridView2 = new System.Windows.Forms.DataGridView();
-            UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            label2 = new System.Windows.Forms.Label();
-            panel_report = new System.Windows.Forms.Panel();
+            panel1 = new Panel();
+            label1 = new Label();
+            panel2 = new Panel();
+            button4 = new Button();
+            button2 = new Button();
+            buttonlogout = new Button();
+            Exit = new Button();
+            button_UpdateRecord = new Button();
+            TransactionTable = new DataGridView();
+            saleIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            salesItemDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            salesDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            amountDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            updatedDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            deleteButton = new DataGridViewButtonColumn();
+            salesTranscationBindingSource = new BindingSource(components);
+            panel_Record = new Panel();
+            label_Record = new Label();
+            panel_YearlyReport = new Panel();
+            label5 = new Label();
+            comboBox_Year = new ComboBox();
+            button3 = new Button();
+            label3 = new Label();
+            dataGridView1 = new DataGridView();
+            monthDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            amountDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            salesSummaryReportBindingSource = new BindingSource(components);
+            panel_MonthlyReport = new Panel();
+            label7 = new Label();
+            comboBox_Month = new ComboBox();
+            label6 = new Label();
+            comboBox_Agent = new ComboBox();
+            label4 = new Label();
+            button5 = new Button();
+            dataGridView2 = new DataGridView();
+            UserName = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            label2 = new Label();
+            panel_report = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TransactionTable).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salesTranscationBindingSource).BeginInit();
             panel_Record.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataSet11).BeginInit();
             panel_YearlyReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salesSummaryReportBindingSource).BeginInit();
@@ -89,7 +89,7 @@ namespace SaleReportSystem
             // panel1
             // 
             panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(label1);
             panel1.Location = new System.Drawing.Point(0, 0);
             panel1.Name = "panel1";
@@ -111,9 +111,10 @@ namespace SaleReportSystem
             // panel2
             // 
             panel2.BackColor = System.Drawing.SystemColors.MenuBar;
-            panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(button4);
             panel2.Controls.Add(button2);
+            panel2.Controls.Add(buttonlogout);
             panel2.Controls.Add(Exit);
             panel2.Location = new System.Drawing.Point(0, 622);
             panel2.Name = "panel2";
@@ -148,6 +149,20 @@ namespace SaleReportSystem
             button2.UseVisualStyleBackColor = false;
             button2.Click += buttonReport_Click;
             // 
+            // buttonlogout
+            // 
+            buttonlogout.AccessibleName = "BtnLogOut";
+            buttonlogout.BackColor = System.Drawing.SystemColors.GrayText;
+            buttonlogout.Font = new System.Drawing.Font("Sans Serif Collection", 14.9999981F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            buttonlogout.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            buttonlogout.Location = new System.Drawing.Point(760, 36);
+            buttonlogout.Name = "buttonlogout";
+            buttonlogout.Size = new System.Drawing.Size(207, 54);
+            buttonlogout.TabIndex = 0;
+            buttonlogout.Text = "Log Out";
+            buttonlogout.UseVisualStyleBackColor = false;
+            buttonlogout.Click += buttonlogout_Click;
+            // 
             // Exit
             // 
             Exit.AccessibleName = "BtnExit";
@@ -179,14 +194,15 @@ namespace SaleReportSystem
             // TransactionTable
             // 
             TransactionTable.AutoGenerateColumns = false;
-            TransactionTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            TransactionTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { saleIdDataGridViewTextBoxColumn, salesItemDataGridViewTextBoxColumn, salesDateDataGridViewTextBoxColumn, userIdDataGridViewTextBoxColumn, amountDataGridViewTextBoxColumn, updatedDateDataGridViewTextBoxColumn });
+            TransactionTable.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            TransactionTable.Columns.AddRange(new DataGridViewColumn[] { saleIdDataGridViewTextBoxColumn, salesItemDataGridViewTextBoxColumn, salesDateDataGridViewTextBoxColumn, amountDataGridViewTextBoxColumn, updatedDateDataGridViewTextBoxColumn, deleteButton });
             TransactionTable.DataSource = salesTranscationBindingSource;
             TransactionTable.Location = new System.Drawing.Point(0, 216);
             TransactionTable.Name = "TransactionTable";
             TransactionTable.RowTemplate.Height = 25;
             TransactionTable.Size = new System.Drawing.Size(1370, 400);
             TransactionTable.TabIndex = 1;
+            TransactionTable.CellContentClick += TransactionTable_DeleteClick;
             // 
             // saleIdDataGridViewTextBoxColumn
             // 
@@ -206,12 +222,6 @@ namespace SaleReportSystem
             salesDateDataGridViewTextBoxColumn.HeaderText = "SalesDate";
             salesDateDataGridViewTextBoxColumn.Name = "salesDateDataGridViewTextBoxColumn";
             // 
-            // userIdDataGridViewTextBoxColumn
-            // 
-            userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
-            userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
-            userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
-            // 
             // amountDataGridViewTextBoxColumn
             // 
             amountDataGridViewTextBoxColumn.DataPropertyName = "Amount";
@@ -220,9 +230,20 @@ namespace SaleReportSystem
             // 
             // updatedDateDataGridViewTextBoxColumn
             // 
+            updatedDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             updatedDateDataGridViewTextBoxColumn.DataPropertyName = "UpdatedDate";
             updatedDateDataGridViewTextBoxColumn.HeaderText = "UpdatedDate";
             updatedDateDataGridViewTextBoxColumn.Name = "updatedDateDataGridViewTextBoxColumn";
+            updatedDateDataGridViewTextBoxColumn.ReadOnly = true;
+            updatedDateDataGridViewTextBoxColumn.Width = 101;
+            // 
+            // deleteButton
+            // 
+            deleteButton.DataPropertyName = "Status";
+            deleteButton.HeaderText = "Status";
+            deleteButton.Name = "deleteButton";
+            deleteButton.Text = "Delete";
+            deleteButton.UseColumnTextForButtonValue = true;
             // 
             // salesTranscationBindingSource
             // 
@@ -230,7 +251,7 @@ namespace SaleReportSystem
             // 
             // panel_Record
             // 
-            panel_Record.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panel_Record.BorderStyle = BorderStyle.FixedSingle;
             panel_Record.Controls.Add(label_Record);
             panel_Record.Location = new System.Drawing.Point(12, 133);
             panel_Record.Name = "panel_Record";
@@ -247,12 +268,6 @@ namespace SaleReportSystem
             label_Record.Size = new System.Drawing.Size(529, 79);
             label_Record.TabIndex = 0;
             label_Record.Text = "Transcation Record";
-            // 
-            // dataSet11
-            // 
-            dataSet11.DataSetName = "DataSet1";
-            dataSet11.Namespace = "http://tempuri.org/DataSet1.xsd";
-            dataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // panel_YearlyReport
             // 
@@ -284,7 +299,7 @@ namespace SaleReportSystem
             comboBox_Year.FormattingEnabled = true;
             comboBox_Year.Location = new System.Drawing.Point(178, 75);
             comboBox_Year.Name = "comboBox_Year";
-            comboBox_Year.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            comboBox_Year.RightToLeft = RightToLeft.Yes;
             comboBox_Year.Size = new System.Drawing.Size(121, 23);
             comboBox_Year.TabIndex = 1;
             comboBox_Year.Tag = "Year";
@@ -321,8 +336,8 @@ namespace SaleReportSystem
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { monthDataGridViewTextBoxColumn, amountDataGridViewTextBoxColumn1 });
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { monthDataGridViewTextBoxColumn, amountDataGridViewTextBoxColumn1 });
             dataGridView1.DataSource = salesSummaryReportBindingSource;
             dataGridView1.Location = new System.Drawing.Point(363, 64);
             dataGridView1.Name = "dataGridView1";
@@ -378,7 +393,7 @@ namespace SaleReportSystem
             comboBox_Month.FormattingEnabled = true;
             comboBox_Month.Location = new System.Drawing.Point(173, 105);
             comboBox_Month.Name = "comboBox_Month";
-            comboBox_Month.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            comboBox_Month.RightToLeft = RightToLeft.Yes;
             comboBox_Month.Size = new System.Drawing.Size(121, 23);
             comboBox_Month.TabIndex = 4;
             comboBox_Month.Tag = "Year";
@@ -399,7 +414,7 @@ namespace SaleReportSystem
             comboBox_Agent.FormattingEnabled = true;
             comboBox_Agent.Location = new System.Drawing.Point(173, 67);
             comboBox_Agent.Name = "comboBox_Agent";
-            comboBox_Agent.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            comboBox_Agent.RightToLeft = RightToLeft.Yes;
             comboBox_Agent.Size = new System.Drawing.Size(121, 23);
             comboBox_Agent.TabIndex = 4;
             comboBox_Agent.Tag = "Year";
@@ -436,8 +451,8 @@ namespace SaleReportSystem
             dataGridView2.AllowUserToResizeRows = false;
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { UserName, dataGridViewTextBoxColumn2 });
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { UserName, dataGridViewTextBoxColumn2 });
             dataGridView2.DataSource = salesSummaryReportBindingSource;
             dataGridView2.Location = new System.Drawing.Point(366, 67);
             dataGridView2.Name = "dataGridView2";
@@ -470,7 +485,7 @@ namespace SaleReportSystem
             // 
             // panel_report
             // 
-            panel_report.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            panel_report.BorderStyle = BorderStyle.FixedSingle;
             panel_report.Controls.Add(label2);
             panel_report.Location = new System.Drawing.Point(742, 133);
             panel_report.Name = "panel_report";
@@ -481,18 +496,18 @@ namespace SaleReportSystem
             // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1370, 761);
-            Controls.Add(panel_MonthlyReport);
-            Controls.Add(panel_YearlyReport);
             Controls.Add(button_UpdateRecord);
             Controls.Add(panel_report);
             Controls.Add(panel_Record);
-            Controls.Add(TransactionTable);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Controls.Add(TransactionTable);
+            Controls.Add(panel_MonthlyReport);
+            Controls.Add(panel_YearlyReport);
             Name = "MainForm";
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sales Report System";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -501,7 +516,6 @@ namespace SaleReportSystem
             ((System.ComponentModel.ISupportInitialize)salesTranscationBindingSource).EndInit();
             panel_Record.ResumeLayout(false);
             panel_Record.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataSet11).EndInit();
             panel_YearlyReport.ResumeLayout(false);
             panel_YearlyReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -516,45 +530,45 @@ namespace SaleReportSystem
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView TransactionTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saleIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salesItemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salesDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updatedDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource salesTranscationBindingSource;
-        private System.Windows.Forms.Button Exit;
-        private System.Windows.Forms.Panel panel_Record;
-        private System.Windows.Forms.Label label_Record;
-        private System.Windows.Forms.Button button_UpdateRecord;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private DataSet1 dataSet11;
-        private System.Windows.Forms.Panel panel_YearlyReport;
-        private System.Windows.Forms.Panel panel_MonthlyReport;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monthDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.BindingSource salesSummaryReportBindingSource;
-        private System.Windows.Forms.ComboBox comboBox_Year;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox_Agent;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox_Month;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel_report;
+        private Panel panel1;
+        private Panel panel2;
+        private Label label1;
+        private DataGridView TransactionTable;
+        private BindingSource salesTranscationBindingSource;
+        private Button Exit;
+        private Panel panel_Record;
+        private Label label_Record;
+        private Button button_UpdateRecord;
+        private Button button2;
+        private Button button4;
+        private Panel panel_YearlyReport;
+        private Panel panel_MonthlyReport;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn monthDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn1;
+        private BindingSource salesSummaryReportBindingSource;
+        private ComboBox comboBox_Year;
+        private Label label3;
+        private Label label4;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn UserName;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private Label label5;
+        private Button button3;
+        private Label label6;
+        private ComboBox comboBox_Agent;
+        private Button button5;
+        private Label label7;
+        private ComboBox comboBox_Month;
+        private Label label2;
+        private Panel panel_report;
+        private DataGridViewTextBoxColumn saleIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn salesItemDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn salesDateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn updatedDateDataGridViewTextBoxColumn;
+        private DataGridViewButtonColumn deleteButton;
+        private Button buttonlogout;
     }
 }
 
